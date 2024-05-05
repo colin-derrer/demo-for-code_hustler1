@@ -1,6 +1,16 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+} from "@/components/ui/dropdown-menu";
+import Image from "next/image";
+import { FacebookIcon, Home, InstagramIcon, TwitterIcon } from "lucide-react";
+import Link from "next/link";
+import Container from "@/components/ui/container";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +26,97 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <nav className="border-b sticky top-0 z-10 bg-background">
+          <Container className="flex justify-between items-center h-12">
+            <Link className="text-xl" href="/">
+              Donghua
+            </Link>
+            <ul className="flex gap-8">
+              <li>
+                <Link href="#">Our Team</Link>
+              </li>
+              <li>
+                <Link href="#">About</Link>
+              </li>
+              <li>
+                <Link href="#">Contact</Link>
+              </li>
+            </ul>
+          </Container>
+        </nav>
+        {children}
+        <footer className="w-full border-t py-6 px-4 md:px-6 bg-gradient-to-br from-[#FFD700] to-[#ff0009]">
+          <div className="container mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="text-center md:text-left">
+                <h3 className="text-lg font-semibold mb-2">Connect with Us</h3>
+                <nav className="flex justify-center md:justify-start space-x-5">
+                  <Link
+                    className="text-sm hover:underline underline-offset-4"
+                    href="#"
+                  >
+                    <TwitterIcon className="h-6 w-6" />
+                    <span className="sr-only">Twitter</span>
+                  </Link>
+                  <Link
+                    className="text-sm hover:underline underline-offset-4"
+                    href="#"
+                  >
+                    <FacebookIcon className="h-6 w-6" />
+                    <span className="sr-only">Facebook</span>
+                  </Link>
+                  <Link
+                    className="text-sm hover:underline underline-offset-4"
+                    href="#"
+                  >
+                    <InstagramIcon className="h-6 w-6" />
+                    <span className="sr-only">Instagram</span>
+                  </Link>
+                </nav>
+              </div>
+              <div className="text-center md:text-left">
+                <h3 className="text-lg font-semibold mb-2">SkyLnk Streamer</h3>
+                <nav className="space-y-2">
+                  <Link
+                    className="text-sm hover:underline underline-offset-4 py-2 px-1"
+                    href="#"
+                  >
+                    Help/FAQ
+                  </Link>
+                  <Link
+                    className="text-sm hover:underline underline-offset-4 py-2 px-1"
+                    href="#"
+                  >
+                    Terms of Use
+                  </Link>
+                  <Link
+                    className="text-sm hover:underline underline-offset-4 py-2 px-1"
+                    href="#"
+                  >
+                    Get the APP
+                  </Link>
+                  <Link
+                    className="text-sm hover:underline underline-offset-4 py-2 px-1"
+                    href="#"
+                  >
+                    Privacy Policy
+                  </Link>
+                </nav>
+              </div>
+              <div className="text-center md:text-left">
+                <p className="text-xs text-gray-500 dark:text-gray-400">
+                  © 2024 Donghua Streamer. All rights reserved.
+                </p>
+                <p className="text-xs text-gray-500 dark:text-gray-400 mt-2">
+                  This site does not store any files on its server. All contents
+                  are provided by non-affiliated third parties.
+                </p>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </body>
     </html>
   );
 }
